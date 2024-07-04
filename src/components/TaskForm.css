@@ -1,4 +1,4 @@
-.app_header{
+.app_header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
     width: 40%;
 }
 
-.task_input{
+.task_input {
     font-size: 20px;
     font-weight: 500;
     background: #f9f9f9;
@@ -19,19 +19,18 @@
     padding: 8px 12px;
     margin-bottom: 15px;
     width: 100%;
+    margin-top: 15px;
 }
 
-.task_input::placeholder{
+.task_input::placeholder {
     color: #686868;
 }
 
-.task_form_bottom_line{
-    display: flex;
+.task_form_bottom_line {
+    
     align-items: center;
     justify-content: space-between;
 }
-
-
 
 .task_status {
     font-size: 16px;
@@ -41,9 +40,10 @@
     width: 120px;
     height: 40px;
     padding: 0 5px;
+    margin-bottom: 10px;
 }
 
-.task_submit{
+.task_submit {
     font-size: 16px;
     font-weight: 500;
     background-color: #6457f9;
@@ -54,6 +54,5 @@
     margin-left: 10px;
     border: none;
     cursor: pointer;
-
-
+    margin-bottom: 10px;
 }
