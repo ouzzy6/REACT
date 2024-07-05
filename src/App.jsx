@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import TaskForm from "./components/TaskForm";
 import TaskColumn from "./components/TaskColumn";
-
+ 
 
 const oldTasks = localStorage.getItem("tasks");
 
@@ -19,6 +19,26 @@ const App = () => {
     setTasks(newTasks);
   };
 
+  const handleStart = (taskIndex)  => {
+   const newTasks = tasks.filter((task, index) => index == taskIndex);
+   newTasks[0].status = 'doing'
+  
+setTasks(newTasks)
+
+ 
+
+  }
+
+  const handleFinally = (taskIndex)  => {
+    const newTasks = tasks.filter((task, index) => index == taskIndex);
+    newTasks[0].status = 'done'
+
+    setTasks(newTasks)
+
+  }
+
+console.log(tasks)
+
   return (
     <div className="app">
       <TaskForm setTasks={setTasks} />
@@ -29,6 +49,7 @@ const App = () => {
           tasks={tasks}
           status="todo"
           handleDelete={handleDelete}
+          handleStart={handleStart}
         />
         <TaskColumn
           title="Doing"
@@ -36,6 +57,7 @@ const App = () => {
           tasks={tasks}
           status="doing"
           handleDelete={handleDelete}
+          handleFinally={handleFinally}
         />
         <TaskColumn
           title="Done"

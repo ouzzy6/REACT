@@ -4,7 +4,7 @@ import Todo from "../assets/direct-hit.png";
 import "./TaskColumn.css";
 import TaskCard from "./TaskCard";
 
-const TaskColumn = ({ title, icon, tasks, status, handleDelete }) => {
+const TaskColumn = ({ title, icon, tasks, status, handleDelete, handleStart, handleFinally }) => {
     return (
         <section className='task_column'>
             <h2 className='task_column_heading'>
@@ -20,6 +20,9 @@ const TaskColumn = ({ title, icon, tasks, status, handleDelete }) => {
                             tags={task.tags}
                             handleDelete={handleDelete}
                             index={index}
+                            handleStart={handleStart}
+                            status={status}
+                            handleFinally={handleFinally}
                         />
                     )
             )}
