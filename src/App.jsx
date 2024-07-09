@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-
 import "./App.css";
 import TaskForm from "./components/TaskForm";
 import TaskColumn from "./components/TaskColumn";
- 
 
 const oldTasks = localStorage.getItem("tasks");
 
@@ -19,25 +17,27 @@ const App = () => {
     setTasks(newTasks);
   };
 
-  const handleStart = (taskIndex)  => {
-   const newTasks = tasks.filter((task, index) => index == taskIndex);
-   newTasks[0].status = 'doing'
-  
-setTasks(newTasks)
+  const handleStart = (taskIndex) => {
+    const newTasks = tasks.map((task, index) => {
+      if (index === taskIndex) {
+        return { ...task, status: 'doing' };
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
 
- 
+  const handleFinally = (taskIndex) => {
+    const newTasks = tasks.map((task, index) => {
+      if (index === taskIndex) {
+        return { ...task, status: 'done' };
+      }
+      return task;
+    });
+    setTasks(newTasks);
+  };
 
-  }
-
-  const handleFinally = (taskIndex)  => {
-    const newTasks = tasks.filter((task, index) => index == taskIndex);
-    newTasks[0].status = 'done'
-
-    setTasks(newTasks)
-
-  }
-
-console.log(tasks)
+  console.log(tasks);
 
   return (
     <div className="app">
@@ -45,24 +45,21 @@ console.log(tasks)
       <main className="app_main">
         <TaskColumn
           title="To do"
-          // icon={todoIcon}
-          tasks={tasks}
+          tasks={tasks.filter(task => task.status === 'todo')}
           status="todo"
           handleDelete={handleDelete}
           handleStart={handleStart}
         />
         <TaskColumn
           title="Doing"
-          // icon={doingIcon}
-          tasks={tasks}
+          tasks={tasks.filter(task => task.status === 'doing')}
           status="doing"
           handleDelete={handleDelete}
           handleFinally={handleFinally}
         />
         <TaskColumn
           title="Done"
-          // icon={doneIcon}
-          tasks={tasks}
+          tasks={tasks.filter(task => task.status === 'done')}
           status="done"
           handleDelete={handleDelete}
         />
