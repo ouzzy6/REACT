@@ -1,35 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import FocusableInput from './components/focusableInput';
+import FirstMountMessage from './components/printMessage';
+import Counter from './components/counter';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
+    <React.StrictMode>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>Focusable Input</h1>
+        <FocusableInput />
+        
+        <h1>First Mount Message</h1>
+        <FirstMountMessage />
+        
+        <h1>Counter</h1>
+        <Counter initialValue={0} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    </React.StrictMode>
+  );
+};
 
-export default App
+export default App;
+
+ReactDOM.render(<App />, document.getElementById('root'));
